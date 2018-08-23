@@ -25,7 +25,6 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `birthday` date NOT NULL DEFAULT '0000-00-00',
   `banned` tinyint(1) NOT NULL DEFAULT '0',
   `banreason` text,
-  `gm` tinyint(1) NOT NULL DEFAULT '0',
   `macs` tinytext,
   `nxCredit` int(11) DEFAULT NULL,
   `maplePoint` int(11) DEFAULT NULL,
@@ -45,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `hwid` varchar(12) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
-  KEY `ranking1` (`id`,`banned`,`gm`),
+  KEY `ranking1` (`id`,`banned`),
   INDEX (id, name),
   INDEX (id, nxCredit, maplePoint, nxPrepaid)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
