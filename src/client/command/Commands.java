@@ -326,28 +326,7 @@ public class Commands {
                 gotomaps.put("neo", 240070000);
                 gotomaps.put("fm", 910000000);
 	}
-        
-        private static void hardsetItemStats(Equip equip, short stat) {
-            equip.setStr(stat);
-            equip.setDex(stat);
-            equip.setInt(stat);
-            equip.setLuk(stat);
-            equip.setMatk(stat);
-            equip.setWatk(stat);
-            equip.setAcc(stat);
-            equip.setAvoid(stat);
-            equip.setJump(stat);
-            equip.setSpeed(stat);
-            equip.setWdef(stat);
-            equip.setMdef(stat);
-            equip.setHp(stat);
-            equip.setMp(stat);
-            
-            byte flag = equip.getFlag();
-            flag |= ItemConstants.UNTRADEABLE;
-            equip.setFlag(flag);
-        }
-        
+
         public static boolean executeHeavenMsCommandLv0(Channel cserv, Server srv, MapleClient c, String[] sub) { //Player
                 MapleCharacter player = c.getPlayer();
             
@@ -1213,95 +1192,65 @@ public class Commands {
                     break;
                     
                 case "heal":
-			player.setHpMp(30000);
+                    player.setHpMp(30000);
                     break;
-                
                 case "item":
                 case "drop":
-                        if (sub.length < 2) {
-				player.yellowMessage("Syntax: !item <itemid> <quantity>");
-				break;
-			}
-                        
-			int itemId = Integer.parseInt(sub[1]);
-                        MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                        
-                        if(ii.getName(itemId) == null) {
-                                player.yellowMessage("Item id '" + sub[1] + "' does not exist.");
-                                break;
-                        }
-                        
-                        short quantity = 1;
-                        if(sub.length >= 3) quantity = Short.parseShort(sub[2]);
-			
-                        if (ServerConstants.BLOCK_GENERATE_CASH_ITEM && ii.isCash(itemId)) {
-                                player.yellowMessage("You cannot create a cash item with this command.");
-                                break;
-                        }
-                        
-                        if (ItemConstants.isPet(itemId)) {
-                                if (sub.length >= 3){   // thanks to istreety & TacoBell
-                                        quantity = 1;
-                                        long days = Math.max(1, Integer.parseInt(sub[2]));
-                                        long expiration = System.currentTimeMillis() + (days * 24 * 60 * 60 * 1000);
-                                        int petid = MaplePet.createPet(itemId);
-                                        
-                                        if(sub[0].equals("item")) {
-                                                MapleInventoryManipulator.addById(c, itemId, quantity, player.getName(), petid, expiration);
-                                        } else {
-                                                Item toDrop = new Item(itemId, (short) 0, quantity, petid);
-                                                toDrop.setExpiration(expiration);
-                                                
-                                                toDrop.setOwner("");
-                                                if(player.gmLevel() < 3) {
-                                                        byte b = toDrop.getFlag();
-                                                        b |= ItemConstants.ACCOUNT_SHARING;
-                                                        b |= ItemConstants.UNTRADEABLE;
-
-                                                        toDrop.setFlag(b);
-                                                }
-
-                                                c.getPlayer().getMap().spawnItemDrop(c.getPlayer(), c.getPlayer(), toDrop, c.getPlayer().getPosition(), true, true);
-                                        }
-                                        
-                                        break;
-                                } else {
-                                        player.yellowMessage("Pet Syntax: !item <itemid> <expiration>");
-                                        break;        
-                                }
-                        }
-                        
-			if (sub[0].equals("item")) {
-				byte flag = 0;
-                                if(player.gmLevel() < 3) {
-                                        flag |= ItemConstants.ACCOUNT_SHARING;
-                                        flag |= ItemConstants.UNTRADEABLE;
-                                }
-                                
-                                MapleInventoryManipulator.addById(c, itemId, quantity, player.getName(), -1, flag, -1);
-			} else {
-				Item toDrop;
-				if (ItemConstants.getInventoryType(itemId) == MapleInventoryType.EQUIP) {
-					toDrop = ii.getEquipById(itemId);
-				} else {
-					toDrop = new Item(itemId, (short) 0, quantity);
-				}
-                                
-                                toDrop.setOwner(player.getName());
-                                if(player.gmLevel() < 3) {
-                                    byte b = toDrop.getFlag();
-                                    b |= ItemConstants.ACCOUNT_SHARING;
-                                    b |= ItemConstants.UNTRADEABLE;
-                                    b |= ItemConstants.SANDBOX;
-                                    
-                                    toDrop.setFlag(b);
-                                    toDrop.setOwner("TRIAL-MODE");
-                                }
-                                
-				c.getPlayer().getMap().spawnItemDrop(c.getPlayer(), c.getPlayer(), toDrop, c.getPlayer().getPosition(), true, true);
-			}
+                    if (sub.length < 2)
+                    {
+                      if (sub[0].equals("item"))
+                      {
+                          player.yellowMessage("Syntax: !item <itemid> [<quantity>]");
+                      }
+                      else
+                      {
+                          player.yellowMessage("Syntax: !drop <itemid> [<quantity>]");
+                      }
+                      break;
+                    }
+                    int itemId = Integer.parseInt(sub[1]);
+                    MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
+                    if (ii.getName(itemId) == null)
+                    {
+                        player.yellowMessage("Item id '" + sub[1] + "' does not exist.");
+                        break;
+                    }
+                    if (ServerConstants.BLOCK_GENERATE_CASH_ITEM && ii.isCash(itemId))
+                    {
+                        player.yellowMessage("You cannot create a cash item with this command.");
+                        break;
+                    }
+                    Item toDrop;
+                    short quantity = 1;
+                    if (sub.length > 2)
+                    {
+                        quantity = Short.parseShort(sub[2]);
+                    }
+                    if (ItemConstants.isPet(itemId)) // pets
+                    {
+                        long days = Math.max(1, quantity); // quantity is use for expiry
+                        long expiration = System.currentTimeMillis() + (days * 24 * 60 * 60 * 1000);
+                        int petid = MaplePet.createPet(itemId);
+                        toDrop = new Item(itemId, (short) 0, (short) 1, petid);
+                        toDrop.setExpiration(expiration);
+                    }
+                    else if (ItemConstants.isEquipment(itemId)) // equipment
+                    {
+                        toDrop = ii.randomizeStats((Equip) ii.getEquipById(itemId));
+                    }
+                    else // all other items
+                    {
+                        toDrop = new Item(itemId, (short) 0, quantity);
+                    }
+                    if (sub[0].equals("item"))
+                    {
+                        MapleInventoryManipulator.addFromDrop(c, toDrop);
+                    }
+                    else
+                    {
+                        player.getMap().spawnItemDrop(player, player, toDrop, player.getPosition(), true, true);
+                    }
                     break; 
-                    
                 case "level":
                         if (sub.length < 2){
 				player.yellowMessage("Syntax: !level <newlevel>");
@@ -2500,23 +2449,18 @@ public class Commands {
                         break;
                         
                     case "proitem":
-                        if (sub.length < 3) {
-                                player.yellowMessage("Syntax: !proitem <itemid> <statvalue>");
+                        if (sub.length < 2) {
+                                player.yellowMessage("Syntax: !proitem <itemid>");
                                 break;
                         }
-                        
-                        int itemid = Integer.parseInt(sub[1]);
-                        short multiply = Short.parseShort(sub[2]);
-
+                        int itemId = Integer.parseInt(sub[1]);
                         MapleItemInformationProvider ii = MapleItemInformationProvider.getInstance();
-                        MapleInventoryType type = ItemConstants.getInventoryType(itemid);
-                        if (type.equals(MapleInventoryType.EQUIP)) {
-                                Item it = ii.getEquipById(itemid);
-                                it.setOwner(player.getName());
-                                
-                                hardsetItemStats((Equip) it, multiply);
-                                MapleInventoryManipulator.addFromDrop(c, it);
-                        } else {
+                        if (ItemConstants.isEquipment(itemId))
+                        {
+                            MapleInventoryManipulator.addFromDrop(c, ii.maxStats((Equip) ii.getEquipById(itemId)));
+                        }
+                        else
+                        {
                                 player.dropMessage(6, "Make sure it's an equippable item.");
                         }
                         break;

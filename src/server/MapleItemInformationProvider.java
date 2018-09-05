@@ -1133,6 +1133,31 @@ public class MapleItemInformationProvider {
         return equip;
     }
 
+    private static short getMaxStat(short defaultValue, int maxRange) {
+        if (defaultValue == 0) {
+            return 0;
+        }
+        return (short) (defaultValue + maxRange);
+    }
+
+    public Equip maxStats(Equip equip) {
+        equip.setStr(getMaxStat(equip.getStr(), 5));
+        equip.setDex(getMaxStat(equip.getDex(), 5));
+        equip.setInt(getMaxStat(equip.getInt(), 5));
+        equip.setLuk(getMaxStat(equip.getLuk(), 5));
+        equip.setMatk(getMaxStat(equip.getMatk(), 5));
+        equip.setWatk(getMaxStat(equip.getWatk(), 5));
+        equip.setAcc(getMaxStat(equip.getAcc(), 5));
+        equip.setAvoid(getMaxStat(equip.getAvoid(), 5));
+        equip.setJump(getMaxStat(equip.getJump(), 5));
+        equip.setSpeed(getMaxStat(equip.getSpeed(), 5));
+        equip.setWdef(getMaxStat(equip.getWdef(), 10));
+        equip.setMdef(getMaxStat(equip.getMdef(), 10));
+        equip.setHp(getMaxStat(equip.getHp(), 10));
+        equip.setMp(getMaxStat(equip.getMp(), 10));
+        return equip;
+    }
+
     private static short getRandUpgradedStat(short defaultValue, int maxRange) {
         if (defaultValue == 0) {
             return 0;

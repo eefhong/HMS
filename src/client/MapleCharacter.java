@@ -5613,13 +5613,13 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             maxmp += improvingMaxMP.getEffect(improvingMaxMPLevel).getX();
         }
         
-        if (ServerConstants.USE_RANDOMIZE_HPMP_GAIN) {
-            if (job.isA(MapleJob.MAGICIAN) || job.isA(MapleJob.BLAZEWIZARD1)) {
-                maxmp += localint_ / 20;
-            } else {
-                maxmp += localint_ / 10;
-            }
-        }
+//        if (ServerConstants.USE_RANDOMIZE_HPMP_GAIN) {
+//            if (job.isA(MapleJob.MAGICIAN) || job.isA(MapleJob.BLAZEWIZARD1)) {
+//                maxmp += localint_ / 20;
+//            } else {
+//                maxmp += localint_ / 10;
+//            }
+//        }
         
         if (takeexp) {
             exp.addAndGet(-ExpTable.getExpNeededForLevel(level));

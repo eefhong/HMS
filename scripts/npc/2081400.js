@@ -62,26 +62,27 @@ function action(mode, type, selection) {
                         if (mode >= 1 && cm.getJobId() % 100 % 10 != 2) {
                                 cm.changeJobById(cm.getJobId() + 1);
                                 if(cm.getJobId() == 412) {
-                                        cm.teachSkill(4120002, 0, 10, -1);
-                                        cm.teachSkill(4120005, 0, 10, -1);
-                                        cm.teachSkill(4121006, 0, 10, -1);
+                                        cm.teachSkill(4120002, 0, 30, -1); // shifter
+                                        cm.teachSkill(4120005, 0, 30, -1); // venomous
+                                        cm.teachSkill(4121000, 0, 30, -1); // warrior
+                                        cm.teachSkill(4121003, 0, 30, -1); // taunt
+                                        cm.teachSkill(4121004, 0, 30, -1); // ambush
+                                        cm.teachSkill(4121006, 0, 30, -1); // shadow
+                                        cm.teachSkill(4121007, 0, 30, -1); // triple
+                                        cm.teachSkill(4121008, 0, 30, -1); // storm
+                                        cm.teachSkill(4121009, 0, 5,  -1); // will
                                 } else if(cm.getJobId() == 422) {
-                                        cm.teachSkill(4220002, 0, 10, -1);
-                                        cm.teachSkill(4220005, 0, 10, -1);
-                                        cm.teachSkill(4221007, 0, 10, -1);
+                                        cm.teachSkill(4220002, 0, 30, -1); // shifter
+                                        cm.teachSkill(4220005, 0, 30, -1); // venomous
+                                        cm.teachSkill(4221000, 0, 30, -1); // warrior
+                                        cm.teachSkill(4221001, 0, 30, -1); // assassinate
+                                        cm.teachSkill(4221003, 0, 30, -1); // taunt
+                                        cm.teachSkill(4221004, 0, 30, -1); // ambush
+                                        cm.teachSkill(4221006, 0, 30, -1); // smokescreen
+                                        cm.teachSkill(4221007, 0, 30, -1); // step
+                                        cm.teachSkill(4221008, 0, 5,  -1); // will
                                 }
                         } else if(mode >= 1 && cm.getJobId() % 100 % 10 == 2) {
-                                if(cm.getJobId() == 412) {
-                                        if(cm.getPlayer().getSkillLevel(4121008) == 0)
-                                                cm.teachSkill(4121008 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(4121004) == 0)
-                                                cm.teachSkill(4121004 , 0, 10, -1);
-                                } else if(cm.getJobId() == 422) {
-                                        if(cm.getPlayer().getSkillLevel(4221004) == 0)
-                                                cm.teachSkill(4221004 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(4221001) == 0)
-                                                cm.teachSkill(4221001 , 0, 10, -1);
-                                }
                                 cm.sendOk("It is done. Leave me now.");
                         }
                         

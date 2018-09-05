@@ -61,42 +61,43 @@ function action(mode, type, selection) {
                         if (mode >= 1 && cm.getJobId() % 100 % 10 != 2) {
                                 cm.changeJobById(cm.getJobId() + 1);
                                 if(cm.getJobId() == 112) {
-                                        cm.teachSkill(1121001, 0, 10, -1);
-                                        cm.teachSkill(1120004, 0, 10, -1);
-                                        cm.teachSkill(1121008, 0, 10, -1);
+                                        cm.teachSkill(1120003, 0, 30, -1); // adv combo
+                                        cm.teachSkill(1120004, 0, 30, -1); // achilles
+                                        cm.teachSkill(1120005, 0, 30, -1); // guardian
+                                        cm.teachSkill(1121000, 0, 30, -1); // warrior
+                                        cm.teachSkill(1121001, 0, 30, -1); // magnet
+                                        cm.teachSkill(1121002, 0, 30, -1); // stance
+                                        cm.teachSkill(1121006, 0, 30, -1); // rush
+                                        cm.teachSkill(1121008, 0, 30, -1); // brandish
+                                        cm.teachSkill(1121010, 0, 30, -1); // enrage
+                                        cm.teachSkill(1121011, 0, 5,  -1); // will
                                 } else if(cm.getJobId() == 122) {
-                                        cm.teachSkill(1221001, 0, 10, -1);
-                                        cm.teachSkill(1220005, 0, 10, -1);
-                                        cm.teachSkill(1221009, 0, 10, -1);
+                                        cm.teachSkill(1220005, 0, 30, -1); // achilles
+                                        cm.teachSkill(1220006, 0, 30, -1); // guardian
+                                        cm.teachSkill(1220010, 0, 10, -1); // adv charge
+                                        cm.teachSkill(1221000, 0, 30, -1); // warrior
+                                        cm.teachSkill(1221001, 0, 30, -1); // magnet
+                                        cm.teachSkill(1221002, 0, 30, -1); // stance
+                                        cm.teachSkill(1221003, 0, 20, -1); // holy charge
+                                        cm.teachSkill(1221004, 0, 20, -1); // divine charge
+                                        cm.teachSkill(1221007, 0, 30, -1); // rush
+                                        cm.teachSkill(1221009, 0, 30, -1); // blast
+                                        cm.teachSkill(1221011, 0, 30, -1); // hammer
+                                        cm.teachSkill(1221012, 0, 5,  -1); // will
                                 } else if(cm.getJobId() == 132) {
-                                        cm.teachSkill(1321001, 0, 10, -1);
-                                        cm.teachSkill(1320005, 0, 10, -1);
-                                        cm.teachSkill(1321007, 0, 10, -1);
+                                        cm.teachSkill(1320005, 0, 30, -1); // achilles
+                                        cm.teachSkill(1320006, 0, 30, -1); // berserk
+                                        cm.teachSkill(1320008, 0, 25, -1); // aura
+                                        cm.teachSkill(1320009, 0, 25, -1); // hex
+                                        cm.teachSkill(1321000, 0, 30, -1); // warrior
+                                        cm.teachSkill(1321001, 0, 30, -1); // magnet
+                                        cm.teachSkill(1321002, 0, 30, -1); // stance
+                                        cm.teachSkill(1321003, 0, 30, -1); // rush
+                                        cm.teachSkill(1321007, 0, 10, -1); // beholder
+                                        cm.teachSkill(1321010, 0, 5,  -1); // will
                                 }
                         } else if(mode >= 0 && cm.getJobId() % 100 % 10 == 2) {
                                 // TEMP until I can get the quest fixed...
-                                if(cm.getJobId() == 112) {
-                                        if(cm.getPlayer().getSkillLevel(1121010) == 0)
-                                                cm.teachSkill(1121010 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(1120005) == 0)
-                                                cm.teachSkill(1120005 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(1121002) == 0)
-                                                cm.teachSkill(1121002 , 0, 10, -1);
-                                }  else if(cm.getJobId() == 122) {
-                                        if(cm.getPlayer().getSkillLevel(1221002) == 0)
-                                                cm.teachSkill(1221002, 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(1221003) == 0)
-                                                cm.teachSkill(1221003, 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(1221004) == 0)
-                                                cm.teachSkill(1221004, 0, 10, -1);
-                                } else if(cm.getJobId() == 132) {
-                                        if(cm.getPlayer().getSkillLevel(1321002) == 0)
-                                                cm.teachSkill(1321002, 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(1320008) == 0)
-                                                cm.teachSkill(1320008, 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(1320009) == 0)
-                                                cm.teachSkill(1320009, 0, 10, -1);
-                                }
                                 cm.sendOk("It is done. Leave me now.");
                         }
                         

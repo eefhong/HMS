@@ -62,30 +62,27 @@ function action(mode, type, selection) {
                         if (mode >= 1 && cm.getJobId() % 100 % 10 != 2) {
                                 cm.changeJobById(cm.getJobId() + 1);
                                 if(cm.getJobId() == 312) {
-                                        cm.teachSkill(3121002, 0, 10, -1);
-                                        cm.teachSkill(3120005, 0, 10, -1);
-                                        cm.teachSkill(3121007, 0, 10, -1);
+                                        cm.teachSkill(3120005, 0, 30, -1); // expert
+                                        cm.teachSkill(3121000, 0, 30, -1); // warrior
+                                        cm.teachSkill(3121002, 0, 30, -1); // eyes
+                                        cm.teachSkill(3121003, 0, 30, -1); // breath
+                                        cm.teachSkill(3121004, 0, 30, -1); // hurricane
+                                        cm.teachSkill(3121006, 0, 30, -1); // pheonix
+                                        cm.teachSkill(3121007, 0, 30, -1); // hamstring
+                                        cm.teachSkill(3121008, 0, 30, -1); // concentrate
+                                        cm.teachSkill(3121009, 0, 5,  -1); // will
                                 } else if(cm.getJobId() == 322) {
-                                        cm.teachSkill(3221002, 0, 10, -1);
-                                        cm.teachSkill(3220004, 0, 10, -1);
-                                        cm.teachSkill(3221006, 0, 10, -1);
+                                        cm.teachSkill(3220004, 0, 30, -1); // boost
+                                        cm.teachSkill(3221000, 0, 30, -1); // warrior
+                                        cm.teachSkill(3221001, 0, 30, -1); // piercing
+                                        cm.teachSkill(3221002, 0, 30, -1); // eyes
+                                        cm.teachSkill(3221003, 0, 30, -1); // breath
+                                        cm.teachSkill(3221005, 0, 30, -1); // frostprey
+                                        cm.teachSkill(3221006, 0, 30, -1); // blind
+                                        cm.teachSkill(3221007, 0, 30, -1); // snipe
+                                        cm.teachSkill(3221008, 0, 5,  -1); // will
                                 }
                         } else if(mode >= 0 && cm.getJobId() % 100 % 10 == 2) {
-                                if(cm.getJobId() == 312) {
-                                        if(cm.getPlayer().getSkillLevel(3121008) == 0)
-                                                cm.teachSkill(3121008 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(3121006) == 0)
-                                                cm.teachSkill(3121006 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(3121004) == 0)
-                                                cm.teachSkill(3121004 , 0, 10, -1);
-                                } else if(cm.getJobId() == 322) {
-                                        if(cm.getPlayer().getSkillLevel(3221007) == 0)
-                                                cm.teachSkill(3221007 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(3221005) == 0)
-                                                cm.teachSkill(3221005 , 0, 10, -1);
-                                        if(cm.getPlayer().getSkillLevel(3221001) == 0)
-                                                cm.teachSkill(3221001 , 0, 10, -1);
-                                }
                                 cm.sendOk("It is done. Leave me now.");
                         }
                         
