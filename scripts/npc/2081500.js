@@ -61,30 +61,6 @@ function action(mode, type, selection) {
                 } else if(status == 1) {
                         if (mode >= 1 && cm.getJobId() % 100 % 10 != 2) {
                                 cm.changeJobById(cm.getJobId() + 1);
-                                if(cm.getJobId() == 512) {
-                                        cm.teachSkill(5121000, 0, 30, -1); // warrior
-                                        cm.teachSkill(5121001, 0, 30, -1); // dragon
-                                        cm.teachSkill(5121002, 0, 30, -1); // orb
-                                        cm.teachSkill(5121003, 0, 20, -1); // transformation
-                                        cm.teachSkill(5121004, 0, 30, -1); // demolition
-                                        cm.teachSkill(5121005, 0, 30, -1); // snatch
-                                        cm.teachSkill(5121007, 0, 30, -1); // barrage
-                                        cm.teachSkill(5121008, 0, 5,  -1); // pirate rage
-                                        cm.teachSkill(5121009, 0, 20, -1); // speed infusion
-                                        cm.teachSkill(5121010, 0, 30, -1); // leap
-                                } else if(cm.getJobId() == 522) {
-                                        cm.teachSkill(5220001, 0, 30, -1); // boost
-                                        cm.teachSkill(5222002, 0, 20, -1); // octopi
-                                        cm.teachSkill(5220011, 0, 20, -1); // bullseye
-                                        cm.teachSkill(5221000, 0, 30, -1); // warrior
-                                        cm.teachSkill(5221003, 0, 20, -1); // aerial strike
-                                        cm.teachSkill(5221004, 0, 30, -1); // rapid fire
-                                        cm.teachSkill(5221006, 0, 10, -1); // battleship
-                                        cm.teachSkill(5221007, 0, 30, -1); // cannon
-                                        cm.teachSkill(5221008, 0, 30, -1); // torpedo
-                                        cm.teachSkill(5221009, 0, 20, -1); // hynotize
-                                        cm.teachSkill(5221010, 0, 5,  -1); // pirate rage?
-                                }
                         } else if(mode >= 1 && cm.getJobId() % 100 % 10 == 2) {
                                 cm.sendOk("It is done. Leave me now.");
                         }

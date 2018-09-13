@@ -484,7 +484,6 @@ public class MapleStatEffect {
                     statups.add(new Pair<>(MapleBuffStat.DASH2, Integer.valueOf(ret.x)));
                     statups.add(new Pair<>(MapleBuffStat.DASH, Integer.valueOf(ret.y)));
                     break;
-                case Corsair.SPEED_INFUSION:
                 case Buccaneer.SPEED_INFUSION:
                 case ThunderBreaker.SPEED_INFUSION:
                     statups.add(new Pair<>(MapleBuffStat.SPEED_INFUSION, Integer.valueOf(x)));
@@ -1497,7 +1496,7 @@ public class MapleStatEffect {
     }
 
     private boolean isInfusion() {
-        return skill && (sourceid == Buccaneer.SPEED_INFUSION || sourceid == Corsair.SPEED_INFUSION || sourceid == ThunderBreaker.SPEED_INFUSION);
+        return skill && (sourceid == Buccaneer.SPEED_INFUSION || sourceid == ThunderBreaker.SPEED_INFUSION);
     }
 
     private boolean isCygnusFA() {

@@ -61,38 +61,6 @@ function action(mode, type, selection) {
                 } else if(status == 1) {
                         if (mode >= 1 && cm.getJobId() % 100 % 10 != 2) {
                                 cm.changeJobById(cm.getJobId() + 1);
-                                if(cm.getJobId() == 212) {
-                                        cm.teachSkill(2121000, 0, 30, -1); // warrior
-                                        cm.teachSkill(2121001, 0, 30, -1); // bang
-                                        cm.teachSkill(2121002, 0, 30, -1); // reflection
-                                        cm.teachSkill(2121003, 0, 30, -1); // fire demon
-                                        cm.teachSkill(2121004, 0, 30, -1); // infinity
-                                        cm.teachSkill(2121005, 0, 30, -1); // equines
-                                        cm.teachSkill(2121006, 0, 30, -1); // paralyze
-                                        cm.teachSkill(2121007, 0, 30, -1); // shower
-                                        cm.teachSkill(2121008, 0, 5,  -1); // will
-                                } else if(cm.getJobId() == 222) {
-                                        cm.teachSkill(2221000, 0, 30, -1); // warrior
-                                        cm.teachSkill(2221001, 0, 30, -1); // bang
-                                        cm.teachSkill(2221002, 0, 30, -1); // reflection
-                                        cm.teachSkill(2221003, 0, 30, -1); // ice demon
-                                        cm.teachSkill(2221004, 0, 30, -1); // infinity
-                                        cm.teachSkill(2221005, 0, 30, -1); // ifrit
-                                        cm.teachSkill(2221006, 0, 30, -1); // lightning
-                                        cm.teachSkill(2221007, 0, 30, -1); // blizzard
-                                        cm.teachSkill(2221008, 0, 5,  -1); // will
-                                } else if(cm.getJobId() == 232) {
-                                        cm.teachSkill(2321000, 0, 30, -1); // warrior
-                                        cm.teachSkill(2321001, 0, 30, -1); // bang
-                                        cm.teachSkill(2321002, 0, 30, -1); // reflection
-                                        cm.teachSkill(2321003, 0, 30, -1); // bahamut
-                                        cm.teachSkill(2321004, 0, 30, -1); // infinity
-                                        cm.teachSkill(2321005, 0, 30, -1); // shield
-                                        cm.teachSkill(2321006, 0, 10, -1); // resurrection
-                                        cm.teachSkill(2321007, 0, 30, -1); // ray
-                                        cm.teachSkill(2321008, 0, 30, -1); // genesis
-                                        cm.teachSkill(2321009, 0, 5,  -1); // will
-                                }
                         } else if( mode >= 1 && cm.getJobId() % 100 % 10 == 2) {
                                 cm.sendOk("It is done. Leave me now.");
                         }

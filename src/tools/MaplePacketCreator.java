@@ -5725,7 +5725,7 @@ public class MaplePacketCreator {
 
         public static byte[] givePirateBuff(List<Pair<MapleBuffStat, Integer>> statups, int buffid, int duration) {
                 final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
-                boolean infusion = buffid == Buccaneer.SPEED_INFUSION || buffid == ThunderBreaker.SPEED_INFUSION || buffid == Corsair.SPEED_INFUSION;
+                boolean infusion = buffid == Buccaneer.SPEED_INFUSION || buffid == ThunderBreaker.SPEED_INFUSION;
                 mplew.writeShort(SendOpcode.GIVE_BUFF.getValue());
                 writeLongMask(mplew, statups);
                 mplew.writeShort(0);
@@ -5741,7 +5741,7 @@ public class MaplePacketCreator {
 
         public static byte[] giveForeignPirateBuff(int cid, int buffid, int time, List<Pair<MapleBuffStat, Integer>> statups) {
                 final MaplePacketLittleEndianWriter mplew = new MaplePacketLittleEndianWriter();
-                boolean infusion = buffid == Buccaneer.SPEED_INFUSION || buffid == ThunderBreaker.SPEED_INFUSION || buffid == Corsair.SPEED_INFUSION;
+                boolean infusion = buffid == Buccaneer.SPEED_INFUSION || buffid == ThunderBreaker.SPEED_INFUSION;
                 mplew.writeShort(SendOpcode.GIVE_FOREIGN_BUFF.getValue());
                 mplew.writeInt(cid);
                 writeLongMask(mplew, statups);
